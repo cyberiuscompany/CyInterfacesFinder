@@ -1,22 +1,21 @@
 
 ![GitHub release downloads](https://img.shields.io/github/downloads/CyberiusCompany/Cyberius-Unzip-Cracker/latest/total)
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
-![System](https://img.shields.io/badge/windows-x64-green)
-![System](https://img.shields.io/badge/linux-x64-green)
+![Platform](https://img.shields.io/badge/windows-x64-green)
+![Platform](https://img.shields.io/badge/linux-x64-green)
 ![License](https://img.shields.io/badge/license-Private-red)
-![Usage](https://img.shields.io/badge/usage-legal%20only-important)
+![Usage](https://img.shields.io/badge/usage-only%20legal-important)
 ![Python](https://img.shields.io/badge/python-3.7%2B-yellow)
 ![Tested on](https://img.shields.io/badge/tested%20on-Windows%2010%2F11%20%7C%20Ubuntu%2022.04-blue)
 
-
 <p align="center">
-  <a href="https://github.com/cyberiuscompany/plantilla">
-    <img src="https://flagcdn.com/w40/es.png" alt="Español" title="Español">
-    <strong>Español</strong>
-  </a>
+  <img src="https://flagcdn.com/w40/es.png" alt="Español" title="Español">
+  <strong>Español</strong>
   &nbsp;|&nbsp;
-  <img src="https://flagcdn.com/w40/us.png" alt="English" title="English">
-  <strong>English</strong>
+  <a href="README.en.md">
+    <img src="https://flagcdn.com/w40/us.png" alt="English" title="English">
+    <strong>English</strong>
+  </a>
   &nbsp;|&nbsp;
   <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0&list=RDxvFZjo5PgG0&start_radio=1&pp=ygUTcmljayByb2xsaW5nIG5vIGFkc6AHAQ%3D%3D">
     <img src="https://flagcdn.com/w40/jp.png" alt="日本語" title="Japanese">
@@ -24,71 +23,79 @@
   </a>
 </p>
 
-# Template
-This is the template I use for building my cybersecurity tools/projects.
-
-Explanation of what the tool does.
-
-- GitHub Pages if available: https://cyberiuscompany.github.io/TOOL-NAME
-- DeepWiki for the tool: https://deepwiki.com/FILL+INDEX
+# CyInterfacesFinder
+CyInterfacesFinder is a Python tool that uses Impacket to query the remote RPC/DCOM service and retrieve the network interfaces advertised by the target host via `IObjectExporter::ServerAlive2()`.
 
 ---
 
 <p align="center">
-  <img src="icono.png" alt="Banner" width="500"/>
-</p>
+  <img src="Icono.png" alt="Banner" width="500"/>
+</p
 
 ---
 
-## 🎥 Demo
+## 🎥 Demonstration
 
 <p align="center">
-  <img src="docs/Demo.gif" width="1200" alt="CyberiusUnzipCracker Demo">
+  <img src="demostración.gif" width="1200" alt="Demonstration of CyberiusUnzipCracker">
 </p>
 
 ---
 
 ## Tool Screenshots
 
-<h2 align="center">Screenshot 1</h2>
+<h2 align="center">Help Panel</h2>
 <p align="center">
-  <img src="Foto1" alt="Screenshot 1" width="500"/>
+  <img src="Foto0.png" alt="Photo 1" width="1000"/>
 </p>
 
-<h2 align="center">Screenshot 2</h2>
+<h2 align="center">Tool Launched</h2>
 <p align="center">
-  <img src="Foto2" alt="Screenshot 2" width="500"/>
+  <img src="Foto1.png" alt="Photo 1" width="1000"/>
 </p>
 
-<h2 align="center">Screenshot 3</h2>
+<h2 align="center">Tool Results and Target Data</h2>
 <p align="center">
-  <img src="Foto3" alt="Screenshot 3" width="500"/>
+  <img src="Foto2.png" alt="Photo 2" width="1000"/>
 </p>
 
-## Description
-
-**TOOL-NAME** is a tool.....TO FILL.
-
-Designed with a cybersecurity focus to......TO FILL.
 
 ## 🚀 Main Features
 
-- TO FILL.
-- TO FILL.
-- TO FILL.
+- Connects to the target's RPC service (binding `ncacn_ip_tcp:<target>`).  
+- Calls `IObjectExporter::ServerAlive2()` to retrieve advertised bindings/addresses.  
+- Robust extraction of `aNetworkAddr` from various formats (dicts with `str`/`bytes` keys, objects, `bytes`, etc.).  
+- Parses bindings to extract protocol, address, IP, and port.  
+- Resolves names when the binding does not contain a direct IP.  
+- Infers `/24` networks as a quick heuristic to detect multiple subnets (possible pivoting).  
+- `--verbose` mode that prints `type()` and `dir()` of problematic objects (helps to tune for impacket or Samba versions).  
+- Option to export results to CSV with `-o/--output`.  
 
-## 🧰 Technologies Used
+## 🧰 Main Options
 
-- TO FILL.
-- TO FILL.
-- TO FILL.
+- `-t, --target` : IP or hostname of the target (e.g., `192.168.1.10`). **Required**.  
+- `-T, --timeout` : Connection timeout in seconds (default `10`).  
+- `-v, --verbose` : Verbose mode (shows debug of problematic objects: `type()` and `dir()`).  
+- `-o, --output` : Save results to CSV (file path).
+
+## ⚙ Implementation detection (heuristic) ️
+
+The tool **cannot guarantee** the implementation (Windows vs Samba).  
+- If `ServerAlive2()` returns objects/attributes consistent with `STRINGBINDING` and typical Windows names → **likely Windows**.  
+- If references to `samba`/`smbd` or different objects/attributes appear → **possible Samba or another implementation**.
+
+> Optional: you can add a check that runs `nmap -sV -p135 <target>` and adds a `likely_implementation` column based on the scan result and the internal heuristic.
+
+## Requirements
+
+- Python 3.8+ (tested on Linux/Windows).  
+- `impacket` (recommended to install in a virtualenv):  
 
 ## 📁 Project Structure
 
 ```bash
-├── file.py # Main Function
-├── file.js # Main Function
-├── file.html # Main Function
+├── CyInterfacesFinder.py # Main script of the project
+├── README.md # This presentation README file
 ```
 ---
 
@@ -103,36 +110,14 @@ Designed with a cybersecurity focus to......TO FILL.
 
 ---
 
-## ⚙️ 1.1 Basic Installation via Clone on 🪟 Windows
+## ⚙️ 1.0 Basic installation by cloning on 🐧 KaliLinux 
 
 ```bash
-git clone..........
-cd TOOL-NAME
-python -m venv venv (Optional)
-.env\Scriptsctivate (Optional)
-pip install -r requirements.txt
-python TOOL-NAME
+git clone https://github.com/cyberiuscompany/CyInterfacesFinder.git
+cd CyInterfacesFinder
+python3 -m venv venv (This command is optional)
+source venv/bin/activate (This command is optional)
+pip install impacket
+python CyInterfacesFinder.py
 ```
-
-## ⚙️ 1.2 Basic Installation via Clone on 🐧 Linux / macOS
-
-```bash
-git clone..........
-cd TOOL-NAME
-python3 -m venv venv (Optional)
-source venv/bin/activate (Optional)
-pip install -r requirements.txt
-python3 TOOL-NAME
-```
-
-## ⚙️ 2 Installation as if it were a professional package
-
-```bash
-git clone..........
-cd TOOL-NAME
-python3 -m venv venv (Optional)
-source venv/bin/activate (Optional)
-pip install -r requirements.txt
-pip install .
-TOOL-NAME
-```
+> Important note: This tool makes RPC/DCE calls against a remote host. Use it only on systems you control or with written authorization from the owner. Unauthorized use may be illegal.
