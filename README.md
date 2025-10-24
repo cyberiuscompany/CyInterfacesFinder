@@ -22,13 +22,9 @@
   </a>
 </p>
 
-# Plantilla
-Este es la plantilla que utilizo para la creación de mis proyectos/herramientas de ciberseguridad
+# CyInterfacesFinder
+CyInterfacesFinder es una herramienta en Python que utiliza Impacket para consultar el servicio RPC/DCOM remoto y recuperar las interfaces de red anunciadas por el host objetivo mediante `IObjectExporter::ServerAlive2()`
 
-Esplicación que hace la herramienta.
-
-- GitHub Pages si la herramienta tiene: https://cyberiuscompany.github.io/NOMBRE-HERRAMIENTA
-- DeepWiki de la herramienta: https://deepwiki.com/RELLENAR+INDEXAR
 ---
 
 <p align="center">
