@@ -28,7 +28,7 @@ CyInterfacesFinder es una herramienta en Python que utiliza Impacket para consul
 ---
 
 <p align="center">
-  <img src="icono.png" alt="Banner" width="500"/>
+  <img src="Icono.png" alt="Banner" width="500"/>
 </p
 
 ---
