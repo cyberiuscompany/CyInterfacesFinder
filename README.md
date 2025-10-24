@@ -114,12 +114,12 @@ La herramienta **no puede garantizar** la implementación (Windows vs Samba).
 ## ⚙️ 1.0 Instalación básica con clonado 🐧 KaliLinux 
 
 ```bash
-git clone..........
-cd NOMBRE-HERRAMIENTA
+git clone https://github.com/cyberiuscompany/CyInterfacesFinder.git
+cd CyInterfacesFinder
 python3 -m venv venv (No es obligatorio este comando)
 source venv/bin/activate (No es obligatorio este comando)
-pip install -r requirements.txt
-python3 NOMBRE-HERRAMIENTA
+pip install impacket
+python CyInterfacesFinder.py 
 ```
 
 
