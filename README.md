@@ -58,24 +58,36 @@ CyInterfacesFinder es una herramienta en Python que utiliza Impacket para consul
   <img src="Foto3" alt="Foto 3" width="500"/>
 </p>
 
-
-## Descripción
-
-**NOMBRE-HERRAMIENTA** es una herramienta.....RELLENAR. 
-
-Diseñada con un enfoque de ciberseguridad para......RELLENAR.
-
 ## 🚀 Funcionalidades principales
 
-- RELLENAR.
-- RELLENAR.
-- RELLENAR.
+- Conecta al servicio RPC del objetivo (binding `ncacn_ip_tcp:<target>`).  
+- Llama a `IObjectExporter::ServerAlive2()` para recuperar bindings/direcciones anunciadas.  
+- Extracción robusta de `aNetworkAddr` desde distintos formatos (dict con keys `str`/`bytes`, objetos, `bytes`, etc.).  
+- Parsea bindings para extraer protocolo, dirección, IP y puerto.  
+- Resuelve nombres cuando el binding no contiene IP directa.  
+- Inferencia de redes `/24` como heurística rápida para detectar múltiples subredes (posible pivoting).  
+- Modo `--verbose` que imprime `type()` y `dir()` de objetos problemáticos (ayuda a ajustar para versiones de `impacket` o Samba).  
+- Opción de exportar resultados a CSV con `-o/--output`.  
 
-## 🧰 Tecnologías utilizadas
+## 🧰 Opciones Principales
 
-- RELLENAR.
-- RELLENAR.
-- RELLENAR.
+- `-t, --target` : IP o hostname del objetivo (ej: `192.168.1.10`). **Requerido**.  
+- `-T, --timeout` : Timeout en segundos para la conexión (por defecto `10`).  
+- `-v, --verbose` : Modo detallado (muestra debug de objetos problemáticos: `type()` y `dir()`).  
+- `-o, --output` : Guardar resultados en CSV (ruta del fichero).
+
+## ⚙ Detección de implementación (heurística) ️
+
+La herramienta **no puede garantizar** la implementación (Windows vs Samba).  
+- Si `ServerAlive2()` devuelve objetos/atributos consistentes con `STRINGBINDING` y nombres típicos de Windows → **probable Windows**.  
+- Si aparecen referencias a `samba`/`smbd` u objetos/atributos distintos → **posible Samba u otra implementación**.
+
+> Opcional: puedo añadir una comprobación que ejecute `nmap -sV -p135 <target>` y añada una columna `likely_implementation` basada en el resultado del escaneo y la heurística interna.
+
+## Requisitos
+
+- Python 3.8+ (probado en entornos Linux/Windows).  
+- `impacket` (recomendado instalar en un virtualenv):  
 
 ## 📁 Estructura del proyecto
 
