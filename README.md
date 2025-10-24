@@ -93,9 +93,8 @@ La herramienta **no puede garantizar** la implementación (Windows vs Samba).
 ## 📁 Estructura del proyecto
 
 ```bash
-├── fichero.py # Función Principal
-├── fichero.js # Función Principal
-├── fichero.html # Función Principal
+├── CyInterfacesFinder.py # Script principal del proyecto
+├── README.md # Este fichero de lectura de presentación de la herramienta
 ```
 ---
 
