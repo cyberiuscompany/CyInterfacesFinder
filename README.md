@@ -95,21 +95,11 @@ Diseñada con un enfoque de ciberseguridad para......RELLENAR.
 - [📜 Licencia](LICENSE)
 - [📢 Soporte](.github/SUPPORT.md)
 
+> Nota importante: Esta herramienta realiza llamadas RPC/DCE contra un host remoto. Úsala solo en sistemas bajo tu control o con autorización escrita del propietario. El uso no autorizado puede ser ilegal.
 
 ---
 
-## ⚙️ 1.1 Instalación básica con clonado 🪟 Windows
-
-```bash
-git clone..........
-cd NOMBRE-HERRAMIENTA
-python -m venv venv (No es obligatorio este comando)
-.\venv\Scripts\activate (No es obligatorio este comando)
-pip install -r requirements.txt
-python NOMBRE-HERRAMIENTA
-```
-
-## ⚙️ 1.2 Instalación básica con clonado 🐧 Linux / macOS
+## ⚙️ 1.2 Instalación básica con clonado 🐧 KaliLinux 
 
 ```bash
 git clone..........
@@ -120,15 +110,5 @@ pip install -r requirements.txt
 python3 NOMBRE-HERRAMIENTA
 ```
 
-## ⚙️ 2 Instalación como si fuese paquete profesional
 
-```bash
-git clone..........
-cd NOMBRE-HERRAMIENTA
-python3 -m venv venv (No es obligatorio este comando)
-source venv/bin/activate (No es obligatorio este comando)
-pip install -r requirements.txt
-pip install .
-NOMBRE-HERRAMIENTA
-```
 
