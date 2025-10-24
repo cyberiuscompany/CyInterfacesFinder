@@ -111,7 +111,7 @@ La herramienta **no puede garantizar** la implementación (Windows vs Samba).
 
 ---
 
-## ⚙️ 1.2 Instalación básica con clonado 🐧 KaliLinux 
+## ⚙️ 1.0 Instalación básica con clonado 🐧 KaliLinux 
 
 ```bash
 git clone..........
