@@ -107,8 +107,6 @@ La herramienta **no puede garantizar** la implementación (Windows vs Samba).
 - [📜 Licencia](LICENSE)
 - [📢 Soporte](.github/SUPPORT.md)
 
-> Nota importante: Esta herramienta realiza llamadas RPC/DCE contra un host remoto. Úsala solo en sistemas bajo tu control o con autorización escrita del propietario. El uso no autorizado puede ser ilegal.
-
 ---
 
 ## ⚙️ 1.0 Instalación básica con clonado en 🐧 KaliLinux 
@@ -119,8 +117,10 @@ cd CyInterfacesFinder
 python3 -m venv venv (No es obligatorio este comando)
 source venv/bin/activate (No es obligatorio este comando)
 pip install impacket
-python CyInterfacesFinder.py 
+python CyInterfacesFinder.py
 ```
+> Nota importante: Esta herramienta realiza llamadas RPC/DCE contra un host remoto. Úsala solo en sistemas bajo tu control o con autorización escrita del propietario. El uso no autorizado puede ser ilegal.
+
 
 
 
